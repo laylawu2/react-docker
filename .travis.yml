@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker # install a copy of docker in the container
+
+before_install:
+  - docker build -t hiro0404/react-docker -f Dockerfile.dev . # tags will only be used inside the travis process
+
+script:
+  - docker run hiro0404/react-docker npm run test -- --coverage # make sure npm run test exits
